@@ -1,0 +1,47 @@
+.PostListItem {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  border-left: 8px solid #2196F3;
+  background-color: #ddffff;
+  max-width: 700px;
+  width: 100%;
+  min-height: 100px;
+  padding: 8px;
+}
+
+.PostListItem .header {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.PostListItem .header h1 {
+  flex: 1;
+  text-align: left;
+}
+
+.PostListItem .subheader {
+  display: flex;
+  padding-top: 4px;
+  align-items: center;
+}
+
+.PostListItem .subheader jg {
+}
+
+.PostListItem .body {
+  padding: 16px 0px;
+  text-align: justify;
+}
+
+.PostListItem .footer {
+  display: flex;
+  width: 100%;
+  justify-content: space-between;
+}
+
+.PostListItem .footer h6 {
+  margin-right: 16px;
+}

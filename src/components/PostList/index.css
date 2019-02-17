@@ -1,0 +1,15 @@
+
+
+.PostList .header {
+  display: flex;
+  max-width: 700px;
+  width: 100%;
+}
+
+.PostList .header h1 {
+  margin-left: 8px;
+}
+
+.PostList .PostListItem {
+  margin-bottom: 4px;
+}

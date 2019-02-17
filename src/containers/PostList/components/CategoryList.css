@@ -1,0 +1,9 @@
+.CategoryList {
+  display: flex;
+  justify-content: center;
+  list-style-type: none;
+}
+
+.CategoryList .category {
+  padding-left: 4px;
+}
