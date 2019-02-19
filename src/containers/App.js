@@ -25,7 +25,7 @@ class App extends Component {
             <Route path="/posts/new" component={PostAddEditContainer} />
             <Route path="/posts/edit/:id" component={PostAddEditContainer} />
             <Route path="/:category/posts" component={PostListCategoryContainer} />
-            <Route path="/posts/:id" component={PostDetailsContainer} />
+            <Route path="/:category/:postId" component={PostDetailsContainer} />
             <Route component={() => (<div>Not found 404</div>)} />
           </Switch>
         </BrowserRouter>

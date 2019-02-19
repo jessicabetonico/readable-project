@@ -23,9 +23,9 @@ class PostDetailsContainer extends Component {
   }
 }
 
-function mapStateToProps(_, { match: { params: { id } } }) {
+function mapStateToProps(_, { match: { params: { postId } } }) {
   return {
-    postId: id,
+    postId,
   };
 }
 

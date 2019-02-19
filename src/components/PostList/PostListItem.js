@@ -8,8 +8,8 @@ import { handleRemovePost, handleVoteUpPost, handleVoteDownPost } from '../../ac
 
 class PostListItem extends Component {
   handlePostViewClick = () => {
-    const { history, postId } = this.props;
-    history.push(`/posts/${postId}`);
+    const { history, postId, post: { category } } = this.props;
+    history.push(`/${category}/${postId}`);
   }
 
   handlePostEditClick = () => {
