@@ -72,6 +72,26 @@ const create = () => {
     return res.json();
   }
 
+  async function voteUpPost(postId) {
+    return votePost(postId, 'upVote');
+  }
+
+  async function voteDownPost(postId) {
+    return votePost(postId, 'downVote');
+  }
+
+  async function votePost(postId, option) {
+    const endpoint = `${urlBase}/posts/${postId}`;
+    const res = await fetch(endpoint, {
+      method: 'POST',
+      headers: {
+        ...headersBase,
+      },
+      body: JSON.stringify({ option })
+    });
+    return res.json();
+  }
+
   async function getInitialData() {
     return Promise.all([
       getCategories(),
@@ -92,6 +112,8 @@ const create = () => {
     updatePost,
     removePost,
     getCommentsByPostId,
+    voteUpPost,
+    voteDownPost,
   }
 }
 

@@ -5,6 +5,7 @@ export const RECEIVE_POSTS = 'RECEIVE_POSTS';
 export const ADD_POST = 'ADD_POST';
 export const UPDATE_POST = 'UPDATE_POST';
 export const REMOVE_POST = 'REMOVE_POST';
+export const VOTE_UPDATE_POST = 'VOTE_UPDATE_POST';
 
 export function receivePosts(posts) {
   return {
@@ -69,4 +70,30 @@ export function handleRemovePost(postId) {
         dispatch(removePost(postId))
       })
   };
+}
+
+function voteUpdatePost(postId, voteScore) {
+  return {
+    type: VOTE_UPDATE_POST,
+    postId,
+    voteScore,
+  };
+}
+
+export function handleVoteUpPost(postId) {
+  return (dispatch) => {
+    return API.voteUpPost(postId)
+      .then(({ voteScore }) => {
+        dispatch(voteUpdatePost(postId, voteScore))
+      })
+  }
+}
+
+export function handleVoteDownPost(postId) {
+  return (dispatch) => {
+    return API.voteDownPost(postId)
+      .then(({ voteScore }) => {
+        dispatch(voteUpdatePost(postId, voteScore))
+      })
+  }
 }

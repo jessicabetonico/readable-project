@@ -4,7 +4,7 @@ import { withRouter } from 'react-router-dom';
 import { connect } from 'react-redux';
 
 import './PostListItem.css';
-import { handleRemovePost } from '../../actions/posts';
+import { handleRemovePost, handleVoteUpPost, handleVoteDownPost } from '../../actions/posts';
 
 class PostListItem extends Component {
   handlePostViewClick = () => {
@@ -23,7 +23,7 @@ class PostListItem extends Component {
   }
 
   render() {
-    const { postId, post, handleRemovePost } = this.props;
+    const { postId, post, handleRemovePost, handleVoteUpPost, handleVoteDownPost } = this.props;
     if (!post) {
       return (
         <div>Post não encontrado</div>
@@ -40,8 +40,8 @@ class PostListItem extends Component {
         </div>
         <div className="subheader">
           <p>Score: {voteScore}</p>
-          <button type="button">vote up</button>
-          <button type="button">vote down</button>
+          <button type="button" onClick={() => handleVoteUpPost(postId)}>vote up</button>
+          <button type="button" onClick={() => handleVoteDownPost(postId)}>vote down</button>
         </div>
         <div className="body">
           <p>{body}</p>
@@ -69,7 +69,9 @@ function mapStateToProps({ posts }, { postId }) {
 
 function mapDispatchToProps(dispatch) {
   return {
-    handleRemovePost: (postId) => dispatch(handleRemovePost(postId))
+    handleRemovePost: (postId) => dispatch(handleRemovePost(postId)),
+    handleVoteUpPost: (postId) => dispatch(handleVoteUpPost(postId)),
+    handleVoteDownPost: (postId) => dispatch(handleVoteDownPost(postId)),
   }
 }
 

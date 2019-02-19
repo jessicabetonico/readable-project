@@ -1,4 +1,4 @@
-import { RECEIVE_POSTS, ADD_POST, UPDATE_POST, REMOVE_POST } from '../actions/posts';
+import { RECEIVE_POSTS, ADD_POST, UPDATE_POST, REMOVE_POST, VOTE_UPDATE_POST } from '../actions/posts';
 import { RECEIVE_COMMENTS } from '../actions/comments';
 
 export default function postsReducer(state = {}, action) {
@@ -39,6 +39,14 @@ export default function postsReducer(state = {}, action) {
           ...state[action.postId],
           comments: action.comments,
         },
+      };
+    case VOTE_UPDATE_POST:
+      return {
+        ...state,
+        [action.postId]: {
+          ...state[action.postId],
+          voteScore: action.voteScore,
+        }
       };
     default:
       return {
