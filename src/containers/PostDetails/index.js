@@ -1,20 +1,32 @@
 import React, { Component } from 'react';
+import { connect } from 'react-redux';
 
 import PostListItem from '../../components/PostList/PostListItem';
-
-const postMock = {
-  title: 'Title 01',
-  body: 'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Rhoncus urna neque viverra justo nec ultrices. Placerat duis ultricies lacus sed turpis tincidunt id aliquet risus. Sagittis nisl rhoncus mattis rhoncus urna neque viverra. Pellentesque massa placerat duis ultricies lacus sed. Nibh mauris cursus mattis molestie a iaculis. Condimentum lacinia quis vel eros donec ac odio tempor.',
-  author: 'Author 01',
-  category: 'Categoty 01',
-};
+import CommentList from './components/CommentList';
+import "./index.css";
 
 class PostDetailsContainer extends Component {
+  handleHomeBtnClick = () => {
+    const { history } = this.props;
+    history.push('/');
+  }
+
   render() {
+    const { postId } = this.props;
     return (
-      <PostListItem post={postMock} />
+      <div className="PostDetailsContainer">
+        <button type="button" onClick={this.handleHomeBtnClick}>Home</button>
+        <PostListItem postId={postId} />
+        <CommentList postId={postId} />
+      </div>
     )
   }
 }
 
-export default PostDetailsContainer;
+function mapStateToProps(_, { match: { params: { id } } }) {
+  return {
+    postId: id,
+  };
+}
+
+export default connect(mapStateToProps)(PostDetailsContainer);

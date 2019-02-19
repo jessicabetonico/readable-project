@@ -10,7 +10,7 @@ class CategoryList extends Component {
     return (
       <ul className="CategoryList">
         Categories:
-        {categories.map((category, index) => (
+        {categories && categories.map((category, index) => (
           <Link className="category" key={index} to={`/${category.name}/posts`}>{category.name}</Link>
         ))}
       </ul>
