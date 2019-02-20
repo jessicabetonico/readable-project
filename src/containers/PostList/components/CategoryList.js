@@ -11,7 +11,7 @@ class CategoryList extends Component {
       <ul className="CategoryList">
         Categories:
         {categories && categories.map((category, index) => (
-          <Link className="category" key={index} to={`/${category.name}/posts`}>{category.name}</Link>
+          <Link className="category" key={index} to={`/${category.name}`}>{category.name}</Link>
         ))}
       </ul>
     );
