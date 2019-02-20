@@ -35,18 +35,22 @@ export default function postsReducer(state = {}, action) {
     case RECEIVE_COMMENTS:
       return {
         ...state,
-        [action.postId]: {
-          ...state[action.postId],
-          comments: action.comments,
-        },
+        ...(state[action.postId] ? ({
+          [action.postId]: {
+            ...state[action.postId],
+            comments: action.comments,
+          },
+        }) : {})
       };
     case VOTE_UPDATE_POST:
       return {
         ...state,
-        [action.postId]: {
-          ...state[action.postId],
-          voteScore: action.voteScore,
-        }
+        ...(state[action.postId] ? ({
+          [action.postId]: {
+            ...state[action.postId],
+            voteScore: action.voteScore,
+          }
+        }) : {}),
       };
     default:
       return {

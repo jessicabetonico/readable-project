@@ -17,14 +17,9 @@ class PostListItem extends Component {
     history.push(`/posts/edit/${postId}`);
   }
 
-  componentDidUpdate() {
-    const { post, history } = this.props;
-    if (!post) history.push('/');
-  }
-
   render() {
     const { postId, post, handleRemovePost, handleVoteUpPost, handleVoteDownPost } = this.props;
-    if (!post) {
+    if (!post || !post.id) {
       return (
         <div>Post não encontrado</div>
       );
